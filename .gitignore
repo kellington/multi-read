@@ -1,0 +1,39 @@
+# --- Never commit -----------------------------------------------------------
+# The .example twins ARE tracked — they're the documentation. Keep them empty
+# of real values.
+SECRETS.PRIVATE.YAML
+!SECRETS.PRIVATE.YAML.example
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# --- Local agent state ------------------------------------------------------
+.claude/settings.local.json
+
+# --- OS / editor ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# --- Build / deps -----------------------------------------------------------
+node_modules/
+dist/
+build/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.log
+
+# --- Project ----------------------------------------------------------------
+# Real data never goes in git. Uncomment and adjust as soon as the project
+# handles anything personal, client-owned, or scraped.
+# data/
+# _data-backup/

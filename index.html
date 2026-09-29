@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-Read</title>
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="cover-wrap" aria-label="Monte-Cristo cover art">
+          <img src="assets/monte-cristo-cover.jpg" alt="Illustrated cover from the French Monte-Cristo EPUB">
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Adaptive French reader</p>
+          <h1 id="title">Multi-Read</h1>
+          <p class="subtitle" id="subtitle">Loading chapter...</p>
+          <p class="source-meta" id="sourceMeta"></p>
+        </div>
+      </header>
+
+      <div class="reader-layout">
+        <section class="reader-main" aria-label="Reader">
+          <div class="toolbar">
+            <div class="mode-buttons" id="modeButtons" aria-label="Choose text difficulty"></div>
+            <label class="toggle-row">
+              <input id="compareToggle" type="checkbox">
+              Compare original
+            </label>
+          </div>
+
+          <nav class="passage-nav" aria-label="Passage navigation">
+            <button class="nav-button" id="previousPassage" type="button">Previous</button>
+            <div class="passage-progress" id="passageProgress"></div>
+            <button class="nav-button" id="nextPassage" type="button">Next</button>
+          </nav>
+          <p class="chapter-status" id="chapterStatus"></p>
+
+          <div class="reader-card">
+            <div class="passage-text" id="passageText"></div>
+            <aside class="comparison" id="comparison" hidden>
+              <h2>Original Source</h2>
+              <div id="comparisonText"></div>
+            </aside>
+          </div>
+        </section>
+
+        <aside class="side-panel" aria-label="Learning tools">
+          <section class="panel-card help-card" id="helpPanel">
+            <h2>Word Help</h2>
+            <h3 class="help-title" id="helpTitle">Tap a highlighted word</h3>
+            <p class="help-body" id="helpBody"></p>
+            <p class="help-note" id="helpNote"></p>
+          </section>
+
+          <section class="panel-card">
+            <h2>Learner State</h2>
+            <ul class="learner-stats" id="learnerStats"></ul>
+            <div class="recommendation" id="recommendation"></div>
+          </section>
+
+          <section class="panel-card">
+            <h2>Local Events</h2>
+            <ol class="event-log" id="eventLog"></ol>
+          </section>
+
+          <button class="reset-button" id="resetButton" type="button">Reset local reading state</button>
+        </aside>
+      </div>
+    </main>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>
