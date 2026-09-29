@@ -12,6 +12,7 @@ const els = {
   subtitle: document.querySelector("#subtitle"),
   sourceMeta: document.querySelector("#sourceMeta"),
   modeButtons: document.querySelector("#modeButtons"),
+  modeDescription: document.querySelector("#modeDescription"),
   passageText: document.querySelector("#passageText"),
   comparison: document.querySelector("#comparison"),
   comparisonText: document.querySelector("#comparisonText"),
@@ -19,6 +20,8 @@ const els = {
   helpTitle: document.querySelector("#helpTitle"),
   helpBody: document.querySelector("#helpBody"),
   helpNote: document.querySelector("#helpNote"),
+  helpAnalysis: document.querySelector("#helpAnalysis"),
+  vocabularyFocus: document.querySelector("#vocabularyFocus"),
   learnerStats: document.querySelector("#learnerStats"),
   recommendation: document.querySelector("#recommendation"),
   eventLog: document.querySelector("#eventLog"),
@@ -114,32 +117,29 @@ function recordEvent(type, payload = {}) {
   renderModel();
 }
 
-function tokenize(text) {
-  const targetWords = Object.keys(glossary).sort((a, b) => b.length - a.length);
-  let html = escapeHtml(text);
-
-  for (const key of targetWords) {
-    const label = glossary[key].headword;
-    const escapedLabel = escapeHtml(label);
-    const pattern = new RegExp(`\\b${escapeRegExp(label)}\\b`, "gi");
-    html = html.replace(pattern, (match) => {
-      return `<button class="word-help" data-key="${key}" type="button">${match}</button>`;
-    });
-
-    if (key.includes("-") && key.replaceAll("-", " ") !== label.toLowerCase()) {
-      const spaced = key.replaceAll("-", " ");
-      const spacedPattern = new RegExp(escapeRegExp(spaced), "gi");
-      html = html.replace(spacedPattern, (match) => {
-        return `<button class="word-help" data-key="${key}" type="button">${match}</button>`;
-      });
-    }
-
-    if (!html.includes(`data-key="${key}"`) && text.toLowerCase().includes(label.toLowerCase())) {
-      html = html.replace(escapedLabel, `<button class="word-help" data-key="${key}" type="button">${escapedLabel}</button>`);
+function tokenize(text, passage) {
+  const terms = new Map();
+  for (const key of passage.vocabularyKeys ?? passage.glossaryKeys ?? []) {
+    const entry = glossary[key];
+    if (!entry) continue;
+    for (const form of [entry.headword, ...(entry.forms ?? [])]) {
+      if (form) terms.set(form.toLocaleLowerCase("fr"), key);
     }
   }
+  if (!terms.size) return escapeHtml(text);
 
-  return html;
+  const pattern = new RegExp(`(?<![\\p{L}\\p{N}])(?:${[...terms.keys()]
+    .sort((a, b) => b.length - a.length)
+    .map(escapeRegExp).join("|")})(?![\\p{L}\\p{N}])`, "giu");
+  let result = "";
+  let end = 0;
+  for (const match of text.matchAll(pattern)) {
+    const key = terms.get(match[0].toLocaleLowerCase("fr"));
+    result += escapeHtml(text.slice(end, match.index));
+    result += `<button class="word-help" data-key="${escapeHtml(key)}" data-classification="${escapeHtml(glossary[key].classification ?? "teach")}" type="button">${escapeHtml(match[0])}</button>`;
+    end = match.index + match[0].length;
+  }
+  return result + escapeHtml(text.slice(end));
 }
 
 function render() {
@@ -147,13 +147,14 @@ function render() {
   const current = passage.representations[state.mode];
   els.title.textContent = passage.book;
   els.subtitle.textContent = `${passage.title} · ${current.label} · ${current.level}`;
-  els.sourceMeta.textContent = `${passage.sourceEpub} · ${passage.sourceChapter}`;
+  els.modeDescription.textContent = current.description;
+  els.sourceMeta.textContent = `${passage.author} · French source text`;
   els.previousPassage.disabled = state.passageIndex === 0;
   els.nextPassage.disabled = state.passageIndex === passages.length - 1;
   els.passageProgress.textContent = `Passage ${state.passageIndex + 1} of ${passages.length}`;
   els.chapterStatus.textContent = state.passageIndex === passages.length - 1
-    ? `End of processed Chapter ${activeChapter.chapterNumber}. Need to process ${activeChapter.nextChapterId?.toUpperCase() ?? "the next chapter"}.`
-    : `Chapter ${activeChapter.chapterNumber} processed first pass. Notes go in project/ideas/feeback-c01.md.`;
+    ? `End of Chapter ${activeChapter.chapterNumber}. Capture feedback before moving on.`
+    : `Chapter ${activeChapter.chapterNumber} is ready for a fresh read. Notice where wording or word help feels off.`;
 
   els.modeButtons.innerHTML = difficultyOrder.map((mode) => {
     const item = passage.representations[mode];
@@ -168,19 +169,32 @@ function render() {
     const isOpen = state.translationsOpen.includes(sentence.id);
     const hasTranslation = Boolean(sentence.translation);
     return `<article class="sentence" data-sentence="${sentence.id}">
-      <p>${tokenize(sentence.text)}</p>
-      <div class="sentence-actions">
+      <p>${state.mode === "original" ? escapeHtml(sentence.text) : tokenize(sentence.text, passage)}</p>
+      ${hasTranslation ? `<div class="sentence-actions">
         <button class="text-button translation-toggle" type="button" data-sentence="${sentence.id}">
-          ${isOpen ? "Hide meaning" : hasTranslation ? "Show meaning" : "Check meaning"}
+          ${isOpen ? "Hide meaning" : "Show meaning"}
         </button>
       </div>
-      <p class="translation ${isOpen ? "is-open" : ""}">${escapeHtml(sentence.translation || "Sentence meaning has not been processed for this chapter yet. Add this to feeback-c01.md if sentence-level meaning should be generated for C02.")}</p>
+      <p class="translation ${isOpen ? "is-open" : ""}">${escapeHtml(sentence.translation)}</p>` : ""}
     </article>`;
   }).join("");
 
   els.compareToggle.checked = state.compareOpen;
   els.comparison.hidden = !state.compareOpen;
   els.comparisonText.innerHTML = passage.originalComparison.map((line) => `<p>${escapeHtml(line)}</p>`).join("");
+
+  const priority = { teach: 0, simplify: 1, ignore_or_gloss: 2 };
+  const focus = (passage.vocabularyKeys ?? [])
+    .filter((key) => priority[glossary[key]?.classification] != null)
+    .sort((a, b) => priority[glossary[a].classification] - priority[glossary[b].classification])
+    .slice(0, 8);
+  els.vocabularyFocus.innerHTML = focus.length
+    ? focus.map((key) => {
+      const entry = glossary[key];
+      const label = { teach: "Learn", simplify: "Eased in Plain", ignore_or_gloss: "Light gloss" }[entry.classification];
+      return `<button type="button" data-key="${escapeHtml(key)}" data-classification="${escapeHtml(entry.classification)}">${escapeHtml(entry.headword)}<span>${label}</span></button>`;
+    }).join("")
+    : "<p>No extra vocabulary guidance in this passage.</p>";
 
   bindInteractions();
   renderHelp();
@@ -201,6 +215,14 @@ function bindInteractions() {
   });
 
   els.passageText.querySelectorAll(".word-help").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.currentHelp = button.dataset.key;
+      recordEvent("lookup", { key: button.dataset.key });
+      renderHelp();
+    });
+  });
+
+  els.vocabularyFocus.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       state.currentHelp = button.dataset.key;
       recordEvent("lookup", { key: button.dataset.key });
@@ -230,12 +252,20 @@ function renderHelp() {
     els.helpTitle.textContent = "Tap a highlighted word";
     els.helpBody.textContent = "Contextual help appears here without taking you away from the passage.";
     els.helpNote.textContent = "Lookups are counted locally as a friction signal.";
+    els.helpAnalysis.textContent = "";
     return;
   }
 
   els.helpTitle.textContent = entry.headword;
   els.helpBody.textContent = entry.meaning;
   els.helpNote.textContent = entry.note;
+  const treatment = {
+    teach: "Learn this: it is useful later in this volume.",
+    simplify: "Plain mode can ease this lower-priority difficulty.",
+    ignore_or_gloss: "Light gloss: understand it here without memorizing it."
+  }[entry.classification] ?? "";
+  const recurrence = entry.futureFrequency == null ? "" : ` ${entry.futureFrequency} later occurrence${entry.futureFrequency === 1 ? "" : "s"} in the available volume.`;
+  els.helpAnalysis.textContent = `${treatment}${recurrence} ${entry.reason ?? ""}`.trim();
 }
 
 function renderModel() {

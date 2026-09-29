@@ -121,7 +121,14 @@ h1 {
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 8px;
+}
+
+.mode-description {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
 }
 
 .mode-buttons {
@@ -281,6 +288,12 @@ h1 {
   outline-offset: 2px;
 }
 
+.word-help[data-classification="ignore_or_gloss"] {
+  color: var(--blue);
+  border-color: rgba(49, 95, 143, 0.3);
+  background: rgba(49, 95, 143, 0.07);
+}
+
 .comparison {
   margin-top: 18px;
   padding-top: 18px;
@@ -315,6 +328,47 @@ h1 {
   border-color: rgba(47, 111, 94, 0.38);
 }
 
+.vocabulary-intro {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.vocabulary-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vocabulary-focus button {
+  padding: 7px 10px;
+  border: 1px solid rgba(47, 111, 94, 0.35);
+  border-radius: 7px;
+  background: #f0f6f1;
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.vocabulary-focus button span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.74rem;
+  font-weight: 500;
+}
+
+.vocabulary-focus button[data-classification="ignore_or_gloss"] {
+  border-color: rgba(49, 95, 143, 0.3);
+  color: var(--blue);
+  background: rgba(49, 95, 143, 0.07);
+}
+
+.vocabulary-focus button[data-classification="simplify"] {
+  border-color: rgba(184, 135, 50, 0.4);
+  color: #73530f;
+  background: #fbf4e8;
+}
+
 .help-title {
   margin: 0 0 8px;
   font-size: 1.25rem;
@@ -328,6 +382,15 @@ h1 {
 .help-note {
   margin: 10px 0 0;
   color: var(--muted);
+  line-height: 1.45;
+}
+
+.help-analysis {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
   line-height: 1.45;
 }
 

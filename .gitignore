@@ -37,3 +37,4 @@ venv/
 # handles anything personal, client-owned, or scraped.
 # data/
 # _data-backup/
+data/lexical-sources/

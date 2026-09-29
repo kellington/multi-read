@@ -1,0 +1,2 @@
+# Offline chapter processing only; the static reader has no Python dependency.
+spacy==3.8.16

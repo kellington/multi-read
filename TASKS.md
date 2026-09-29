@@ -13,17 +13,15 @@ is the real record. Don't let this file become the project's second STATE.md.
 
 Actively being worked on right now.
 
-- [ ] Read Chapter 1 and collect notes in `project/ideas/feeback-c01.md`.
-- [ ] Before C02, review feedback and revise the chapter JSON schema / processing rules.
+- [ ] Restart the book with the vocabulary-aware Chapter 1 baseline and collect reading notes in `project/ideas/feeback-c01.md`.
+- [ ] Review awkward Plain passages, vocabulary guidance, and proposed schema changes before C02.
 
 ## Next
 
 The next handful, ordered.
 
-- [ ] Process Chapter 2 into `data/monte-cristo/c02.json` and `c02.js`.
-- [ ] Decide whether sentence meaning support should be generated for every sentence or only on demand.
-- [ ] Improve Plain mode beyond mechanical segmentation.
-- [ ] Add a small smoke-test checklist or browser test for file-mode reader interactions.
+- [ ] Revise the app, vocabulary rules, or chapter schema from the reading feedback; decide whether and when to generate sentence meanings.
+- [ ] Process Chapter 2 into `data/monte-cristo/c02.json` and `c02.js` using the reviewed rules.
 
 ## Later
 
@@ -31,6 +29,7 @@ Small near-term ideas that don't deserve an issue yet.
 
 - [ ] Add optional LLM-backed transformations behind the chapter processor.
 - [ ] Add an in-app chapter picker once more than one chapter is processed.
+- [ ] Add a small smoke-test checklist or browser test for file-mode reader interactions.
 
 ## Done (recent)
 
@@ -40,6 +39,8 @@ Cleared at each milestone.
 - [x] Build first static adaptive-reader visual slice.
 - [x] Add chapter-by-chapter processing workflow.
 - [x] Process Chapter 1 from the Monte-Cristo EPUB.
+- [x] Analyze Chapter 1 vocabulary against the available volume with spaCy, FLELex, and Lexique; generate vocabulary records and a difficulty map.
+- [x] Rebuild Chapter 1 and the static reader with vocabulary guidance and selected Plain substitutions.
 
 ---
 

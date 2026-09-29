@@ -29,6 +29,7 @@
               Compare original
             </label>
           </div>
+          <p class="mode-description" id="modeDescription"></p>
 
           <nav class="passage-nav" aria-label="Passage navigation">
             <button class="nav-button" id="previousPassage" type="button">Previous</button>
@@ -47,11 +48,18 @@
         </section>
 
         <aside class="side-panel" aria-label="Learning tools">
+          <section class="panel-card vocabulary-card">
+            <h2>Vocabulary guide</h2>
+            <p class="vocabulary-intro">Learn recurring words; lightly gloss names and one-off terms.</p>
+            <div id="vocabularyFocus" class="vocabulary-focus"></div>
+          </section>
+
           <section class="panel-card help-card" id="helpPanel">
             <h2>Word Help</h2>
             <h3 class="help-title" id="helpTitle">Tap a highlighted word</h3>
             <p class="help-body" id="helpBody"></p>
             <p class="help-note" id="helpNote"></p>
+            <p class="help-analysis" id="helpAnalysis"></p>
           </section>
 
           <section class="panel-card">

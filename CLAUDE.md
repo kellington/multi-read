@@ -169,7 +169,7 @@ and business rules out of STATE.md, where they'd rot.
 
 ### Data model
 
-Processed chapter data lives in `data/monte-cristo/`: each chapter has canonical JSON. The vault dashboard serves JSON, so the app can load chapters with `fetch()`. Runtime learner state is local browser state in `localStorage` under `multi-read-v0.1`; the canonical copy is under `http://127.0.0.1:8765`.
+Processed chapter data lives in `data/monte-cristo/`: each chapter has canonical JSON. Chapter 1 also has token, vocabulary, and difficulty-map JSON plus simplification notes, generated or informed by the offline spaCy/FLELex/Lexique workflow described in `README.md`. The vault dashboard serves JSON, so the app can load chapters with `fetch()`. Runtime learner state is local browser state in `localStorage` under `multi-read-v0.1`; the canonical copy is under `http://127.0.0.1:8765`.
 
 ### User roles
 
@@ -196,8 +196,8 @@ open http://127.0.0.1:8765/multi-read/
 # fallback local server
 python3 -m http.server 5173
 
-# process chapter 1
-python3 scripts/process_chapter.py --epub 'Books/Le_comte_de_Monte-Cristo_Tome_[...]Dumas_Alexandre_btv1b8600196s.epub' --chapter-path OEBPS/e08600196_c01.html --chapter-id c01 --title 'Marseille. L’arrivee.' --out-json data/monte-cristo/c01.json --out-js data/monte-cristo/c01.js
+# process chapter 1 (set up .venv and local lexical source tables per README.md first)
+.venv/bin/python scripts/process_chapter.py --epub 'Books/Le_comte_de_Monte-Cristo_Tome_[...]Dumas_Alexandre_btv1b8600196s.epub' --chapter-path OEBPS/e08600196_c01.html --chapter-id c01 --title 'Marseille. L’arrivee.' --flelex data/lexical-sources/FleLex_TT_Beacco.tsv --lexique data/lexical-sources/Lexique400.tsv --out-json data/monte-cristo/c01.json --out-js data/monte-cristo/c01.js
 
 # test
 open http://127.0.0.1:8765/multi-read/ and smoke-test mode switching, word help, navigation and reset
@@ -209,6 +209,7 @@ n/a for v0.1 static prototype
 ### Known gotchas
 
 - The French source EPUB is `Books/Le_comte_de_Monte-Cristo_Tome_[...]Dumas_Alexandre_btv1b8600196s.epub`; chapter 1 text is in `OEBPS/e08600196_c01.html`.
+- The French EPUB is a 55-chapter volume, not the whole novel. Vocabulary `futureFrequency` is relative to later chapters in that volume. Raw FLELex and Lexique tables are local and gitignored; source attribution is in `data/monte-cristo/README.md`.
 - The English Penguin EPUB is present for reference but should not be treated as free text for checked-in comparison content.
 - Chapter feedback goes in `project/ideas/feeback-c01.md` before processing C02.
 - The vault dashboard is read-only static hosting. If persistence beyond `localStorage` is needed, coordinate with the Knowledge/vault dashboard session rather than adding an API here.

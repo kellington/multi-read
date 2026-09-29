@@ -1,16 +1,17 @@
 # State
 
-*Last updated: 2026-09-28 00:00*
+*Last updated: 2026-09-29*
 
 ## Summary
 
-Multi-Read now has a real project brief and a runnable static v0.1 reader slice. The canonical local URL is `http://127.0.0.1:8765/multi-read/`, served by the Knowledge vault dashboard. The app fetches processed Chapter 1 data from `data/monte-cristo/c01.json`, with plain/guided/original representations, contextual glossary help, original comparison, local event tracking, passage navigation, and a rule-based adaptation recommendation.
+Multi-Read now has a vocabulary-aware first-pass Chapter 1 baseline. The processor analyzes the 55 chapters in the available French volume with spaCy, joins FLELex learner levels and Lexique modern frequencies, and generates vocabulary records, a difficulty map, and rebuilt chapter JSON. The reader uses curated vocabulary decisions in contextual help and eases selected low-value terms in Plain mode. The next step is for the learner to restart Chapter 1 and collect app and schema feedback. The canonical URL is `http://127.0.0.1:8765/multi-read/`.
 
 ## What's working
 
 - Static browser app in `index.html`, `src/app.js`, and `src/styles.css`.
-- Chapter 1 processor output in `data/monte-cristo/c01.json`; `c01.js` remains optional for file-mode fallback.
-- EPUB processing script in `scripts/process_chapter.py`.
+- Vocabulary-aware Chapter 1 data in `data/monte-cristo/c01.json`; `c01.js` remains optional for file-mode fallback.
+- Reproducible processing in `scripts/process_chapter.py` and `scripts/vocabulary.py`; `c01.vocabulary.json` and `c01.difficulty-map.json` expose the analysis.
+- Reader modes: Plain eases selected terms and separates some long units, Guided keeps original wording with vocabulary buttons, and Original presents unmarked source text.
 - Feedback scratch file in `project/ideas/feeback-c01.md`.
 - Extracted cover image at `assets/monte-cristo-cover.jpg`.
 - Product docs in `PROJECT.md`, `PLAN.md`, and `README.md` are no longer starter templates.
@@ -18,13 +19,15 @@ Multi-Read now has a real project brief and a runnable static v0.1 reader slice.
 
 ## In progress
 
-- Chapter 1 is processed first pass. Next work is to read it and collect feedback before changing schema or generating Chapter 2.
+- The learner's fresh Chapter 1 reading and feedback pass. Review wording, vocabulary decisions, and schema needs before C02.
 
 ## Known issues
 
 - The learner model is intentionally naive: lookup and translation counts are rough friction signals, not a real proficiency estimate.
-- Plain mode is currently mechanical segmentation, not a high-quality simplification.
-- Sentence translations are not generated in schema v1; the app disables `Show meaning` when no translation exists.
+- Plain mode has selected curated substitutions but is not a reviewed B1 simplification; many passages still retain literary syntax.
+- Automatic lemmas, proper names, lexical joins, and classification rules can be wrong, especially with OCR and historical French. Reader meanings are curated for a subset of Chapter 1 terms rather than generated for every lemma.
+- Frequency counts cover the 55-chapter available volume, not the entire novel.
+- Sentence translations are not generated in Chapter 1 schema v2; the reader hides `Show meaning` when no translation exists.
 
 ## Business snapshot
 
@@ -42,15 +45,16 @@ The Knowledge vault dashboard serves this repo from `/Users/rob/Documents/GitHub
 
 ## Open questions
 
-- Whether sentence meaning support should be generated for every sentence.
+- Whether sentence meaning support should be generated for every sentence or only where a reader needs it.
 - How much simplification is acceptable before a passage stops feeling like Dumas.
-- What changes Chapter 1 feedback requires before processing C02.
+- How much vocabulary guidance is helpful before highlighting becomes distracting.
+- What the fresh Chapter 1 reading pass will reveal before C02.
 
 ## Resolved this session
 
-- Replaced starter-kit docs with Multi-Read docs.
-- Added the first static visual reader slice.
-- Added chapter-by-chapter processing workflow and processed C01.
+- Rebuilt Chapter 1 with spaCy lemma/POS and recurrence counts, FLELex learner levels, Lexique modern-frequency bands, and inspectable classifications.
+- Added contextual vocabulary decisions to the reader and selected Plain substitutions, while preserving Guided and Original source wording.
+- Verified that the static reader loads at the canonical URL and smoke-tested word help and all three modes on the fallback test origin.
 
 ---
 
