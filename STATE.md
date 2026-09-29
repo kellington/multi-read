@@ -4,7 +4,7 @@
 
 ## Summary
 
-Multi-Read now has a vocabulary-aware first-pass Chapter 1 baseline. The processor analyzes the 55 chapters in the available French volume with spaCy, joins FLELex learner levels and Lexique modern frequencies, and generates vocabulary records, a difficulty map, and rebuilt chapter JSON. The reader uses curated vocabulary decisions in contextual help and eases selected low-value terms in Plain mode. The next step is for the learner to restart Chapter 1 and collect app and schema feedback. The canonical URL is `http://127.0.0.1:8765/multi-read/`.
+Multi-Read has a vocabulary-aware first-pass Chapter 1 baseline. The processor analyzes the 55 chapters in the available French volume with spaCy, joins FLELex learner levels and Lexique modern frequencies, and generates vocabulary records, a difficulty map, and rebuilt chapter JSON. The reader uses curated vocabulary decisions in contextual help and eases selected low-value terms in Plain mode. The learner is starting a fresh Chapter 1 reading pass to collect improvements for Chapter 2. The canonical URL is `http://127.0.0.1:8765/multi-read/`.
 
 ## What's working
 
@@ -19,7 +19,7 @@ Multi-Read now has a vocabulary-aware first-pass Chapter 1 baseline. The process
 
 ## In progress
 
-- The learner's fresh Chapter 1 reading and feedback pass. Review wording, vocabulary decisions, and schema needs before C02.
+- The learner's fresh Chapter 1 reading and feedback pass in `project/ideas/feeback-c01.md`. Capture app, vocabulary, and schema ideas for Chapter 2, then review them before processing C02.
 
 ## Known issues
 
@@ -49,12 +49,13 @@ The Knowledge vault dashboard serves this repo from `/Users/rob/Documents/GitHub
 - How much simplification is acceptable before a passage stops feeling like Dumas.
 - How much vocabulary guidance is helpful before highlighting becomes distracting.
 - What the fresh Chapter 1 reading pass will reveal before C02.
+- PLAN.md still shows the three vocabulary-analysis and integration criteria unchecked, although the baseline is implemented. Reconcile the checklist when the current milestone is closed.
 
 ## Resolved this session
 
-- Rebuilt Chapter 1 with spaCy lemma/POS and recurrence counts, FLELex learner levels, Lexique modern-frequency bands, and inspectable classifications.
-- Added contextual vocabulary decisions to the reader and selected Plain substitutions, while preserving Guided and Original source wording.
-- Verified that the static reader loads at the canonical URL and smoke-tested word help and all three modes on the fallback test origin.
+- Rebuilt Chapter 1 with vocabulary analysis, contextual help, and selected Plain substitutions; previously smoke-tested the static reader.
+- Removed two non-public-domain EPUBs from Git history before pushing the repository to GitHub. At closeout, `main` and `origin/main` are at `ce9e9f3`; these STATE.md and TASKS.md updates are uncommitted.
+- Set the next handoff: use the app to gather Chapter 2 improvements before changing the processor or chapter schema.
 
 ---
 

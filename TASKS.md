@@ -13,14 +13,13 @@ is the real record. Don't let this file become the project's second STATE.md.
 
 Actively being worked on right now.
 
-- [ ] Restart the book with the vocabulary-aware Chapter 1 baseline and collect reading notes in `project/ideas/feeback-c01.md`.
-- [ ] Review awkward Plain passages, vocabulary guidance, and proposed schema changes before C02.
+- [ ] Read Chapter 1 in the vocabulary-aware app and collect app, vocabulary, and schema ideas for Chapter 2 in `project/ideas/feeback-c01.md`.
 
 ## Next
 
 The next handful, ordered.
 
-- [ ] Revise the app, vocabulary rules, or chapter schema from the reading feedback; decide whether and when to generate sentence meanings.
+- [ ] Review the reading notes, then revise the app, vocabulary rules, or chapter schema; decide whether and when to generate sentence meanings.
 - [ ] Process Chapter 2 into `data/monte-cristo/c02.json` and `c02.js` using the reviewed rules.
 
 ## Later
