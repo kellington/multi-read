@@ -38,3 +38,6 @@ venv/
 # data/
 # _data-backup/
 data/lexical-sources/
+
+# New EPUBs require deliberate review before they enter Git history.
+Books/*.epub
