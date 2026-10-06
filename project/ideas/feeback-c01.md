@@ -8,7 +8,7 @@ Use this while reading Chapter 1. Keep it messy; this is raw product signal.
 
 ## Plain Mode
 
--
+- There are still words I do not know that are not highlighted - gréé, arrimé
 
 ## Guided Mode
 
@@ -20,7 +20,13 @@ Use this while reading Chapter 1. Keep it messy; this is raw product signal.
 
 ## Glossary / Help
 
--
+- what is "Eased in Plain" and "Light Gloss"?  I could think of maybe "Definition" or "Simplification" as a flag for reason in the glossary.
+- I do like the guidance about word usage:
+    batiment
+    vessel, ship
+    In this chapter it is nautical, not a building.
+    81 later occurrences in the available volume. Common learner vocabulary; leave the original word in place.
+
 
 ## Schema Ideas
 
