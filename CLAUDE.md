@@ -73,12 +73,18 @@ questions" instead.
 
 ## Status reporting
 
-Run **`/project-status`** (`.claude/commands/project-status.md`) to generate a
-dated, self-contained HTML page at `project/status/status-YYYY-MM-DD.html` plus
-`project/status/STATUS-SUMMARY.md`, which feeds the workspace portfolio roll-up.
+Run the global **`/project-status`** skill (`~/.claude/skills/project-status/`) to
+generate a dated, self-contained HTML page at `project/status/status-YYYY-MM-DD.html`
+plus `project/status/STATUS-SUMMARY.md`, which feeds the workspace portfolio roll-up.
+Metadata (group, profile, priority) comes from the workspace README table; repo
+config lives in "## Project status" below. Don't add a per-repo command.
 
-Customize that command for this project — it is meant to be tailored, not
-generic. See its header comments.
+## Project status
+
+```yaml
+name: Multi-Read
+profile: Personal Project
+```
 
 ## Guardrails
 
