@@ -13,7 +13,7 @@ is the real record. Don't let this file become the project's second STATE.md.
 
 Actively being worked on right now.
 
-- [ ] Read Chapter 1 in the vocabulary-aware app and collect app, vocabulary, and schema ideas for Chapter 2 in `project/ideas/feeback-c01.md`.
+- [ ] Read Chapter 1 in the vocabulary-aware app and collect app, vocabulary, and schema ideas for Chapter 2 in `project/ideas/feedback-c01.md`.
 
 ## Next
 

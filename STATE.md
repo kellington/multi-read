@@ -12,14 +12,14 @@ Multi-Read has a vocabulary-aware first-pass Chapter 1 baseline. The processor a
 - Vocabulary-aware Chapter 1 data in `data/monte-cristo/c01.json`; `c01.js` remains optional for file-mode fallback.
 - Reproducible processing in `scripts/process_chapter.py` and `scripts/vocabulary.py`; `c01.vocabulary.json` and `c01.difficulty-map.json` expose the analysis.
 - Reader modes: Plain eases selected terms and separates some long units, Guided keeps original wording with vocabulary buttons, and Original presents unmarked source text.
-- Feedback scratch file in `project/ideas/feeback-c01.md`.
+- Feedback scratch file in `project/ideas/feedback-c01.md`.
 - Extracted cover image at `assets/monte-cristo-cover.jpg`.
 - Product docs in `PROJECT.md`, `PLAN.md`, and `README.md` are no longer starter templates.
 - The actual French source EPUB path is identified in docs and sample data.
 
 ## In progress
 
-- The learner's fresh Chapter 1 reading and feedback pass in `project/ideas/feeback-c01.md`. Capture app, vocabulary, and schema ideas for Chapter 2, then review them before processing C02.
+- The learner's fresh Chapter 1 reading and feedback pass in `project/ideas/feedback-c01.md`. Capture app, vocabulary, and schema ideas for Chapter 2, then review them before processing C02.
 
 ## Known issues
 

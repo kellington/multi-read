@@ -86,7 +86,7 @@ uv pip install --python .venv/bin/python -r requirements-processing.txt
   --out-json data/monte-cristo/c01.json --out-js data/monte-cristo/c01.js
 ```
 
-Restart Chapter 1 with this baseline and keep product notes in `project/ideas/feeback-c01.md`. Before processing Chapter 2, review those notes and adjust the app, schema, or processing rules.
+Restart Chapter 1 with this baseline and keep product notes in `project/ideas/feedback-c01.md`. Before processing Chapter 2, review those notes and adjust the app, schema, or processing rules.
 
 ## Learner Model
 

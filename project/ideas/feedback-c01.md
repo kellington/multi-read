@@ -34,7 +34,7 @@ Use this while reading Chapter 1. Keep it messy; this is raw product signal.
 
 ## App Changes Before C02
 
-- Sentence meaning has not been processed for this chapter yet. Add this to feeback-c01.md if sentence-level meaning should be generated for C02.
+- Sentence meaning has not been processed for this chapter yet. Add this to feedback-c01.md if sentence-level meaning should be generated for C02.
 
 
 ## Future
