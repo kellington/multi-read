@@ -4,7 +4,7 @@ tagline: "Local-first adaptive French reading prototype (Le Comte de Monte-Crist
 group: Personal
 profile: Personal Project
 priority: 21
-status: "Vocabulary-aware Chapter 1 baseline built; Rob is doing a fresh C01 reading pass and logging feedback before Chapter 2 is processed. PLAN checklist still shows 3 built items unchecked."
+status: "Vocabulary-aware Chapter 1 baseline built; Rob is doing a fresh C01 reading pass and logging feedback before Chapter 2 is processed. Work branch is unpushed and PLAN checklist lags 3 built items."
 generated: 2026-10-06
 questions_for_rob:
   - question: "Push branch 'VScode-&-Codex' and merge it into main?"

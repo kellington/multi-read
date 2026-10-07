@@ -1,6 +1,6 @@
 # State
 
-*Last updated: 2026-09-29*
+*Last updated: 2026-10-06*
 
 ## Summary
 
@@ -49,13 +49,14 @@ The Knowledge vault dashboard serves this repo from `/Users/rob/Documents/GitHub
 - How much simplification is acceptable before a passage stops feeling like Dumas.
 - How much vocabulary guidance is helpful before highlighting becomes distracting.
 - What the fresh Chapter 1 reading pass will reveal before C02.
+- Work happens on branch `VScode-&-Codex`, which is ahead of `origin` and not merged into `main`. Push/merge is Rob's call.
 - PLAN.md still shows the three vocabulary-analysis and integration criteria unchecked, although the baseline is implemented. Reconcile the checklist when the current milestone is closed.
 
 ## Resolved this session
 
-- Rebuilt Chapter 1 with vocabulary analysis, contextual help, and selected Plain substitutions; previously smoke-tested the static reader.
-- Removed two non-public-domain EPUBs from Git history before pushing the repository to GitHub. At closeout, `main` and `origin/main` are at `ce9e9f3`; these STATE.md and TASKS.md updates are uncommitted.
-- Set the next handoff: use the app to gather Chapter 2 improvements before changing the processor or chapter schema.
+- 2026-10-06: Configured the repo for the global `/project-status` skill (`## Project status` block in CLAUDE.md with `extra_sources` and `never_read`). Generated the first status page, `project/status/status-2026-10-06.html`, plus `STATUS-SUMMARY.md`.
+- Renamed `project/ideas/feeback-c01.md` → `feedback-c01.md` and updated every reference.
+- First reading notes are in `feedback-c01.md`: unknown words left unhighlighted in Plain mode (gréé, arrimé), unclear "Eased in Plain" / "Light Gloss" labels, and positive notes on the word-usage guidance.
 
 ---
 
