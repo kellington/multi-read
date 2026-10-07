@@ -84,6 +84,12 @@ config lives in "## Project status" below. Don't add a per-repo command.
 ```yaml
 name: Multi-Read
 profile: Personal Project
+extra_sources:
+  - project/ideas/feedback-c01.md
+never_read:
+  - Books/
+  - data/
+  - SECRETS.PRIVATE.YAML
 ```
 
 ## Guardrails
@@ -217,5 +223,5 @@ n/a for v0.1 static prototype
 - The French source EPUB is `Books/Le_comte_de_Monte-Cristo_Tome_[...]Dumas_Alexandre_btv1b8600196s.epub`; chapter 1 text is in `OEBPS/e08600196_c01.html`.
 - The French EPUB is a 55-chapter volume, not the whole novel. Vocabulary `futureFrequency` is relative to later chapters in that volume. Raw FLELex and Lexique tables are local and gitignored; source attribution is in `data/monte-cristo/README.md`.
 - The Penguin Classics and HarperCollins EPUBs were removed from Git history before the public push. Do not reintroduce them; review rights before tracking any new EPUB.
-- Chapter feedback goes in `project/ideas/feeback-c01.md` before processing C02.
+- Chapter feedback goes in `project/ideas/feedback-c01.md` before processing C02.
 - The vault dashboard is read-only static hosting. If persistence beyond `localStorage` is needed, coordinate with the Knowledge/vault dashboard session rather than adding an API here.
