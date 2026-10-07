@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Read Status</title>
+<style>
+:root{--primary:#1f5f3f;--accent:#3a9d6a;--bg:#f6f8f6;--card:#fff;--ink:#1c2420;--muted:#5d6b63;--line:#dfe6e1;
+--green:#2e8b57;--amber:#c98a00;--red:#c0392b;--grey:#8a958f}
+@media (prefers-color-scheme:dark){:root{--bg:#121714;--card:#1b221e;--ink:#e6ece8;--muted:#9aa8a0;--line:#2c3631;--primary:#7fd1a4;--accent:#5fbf8a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:1060px;margin:0 auto;padding:24px 16px 48px}
+header{border-bottom:3px solid var(--accent);padding-bottom:14px;margin-bottom:20px}
+h1{margin:0;font-size:28px;color:var(--primary)}
+h2{font-size:17px;margin:0 0 10px;color:var(--primary)}
+.sub{color:var(--muted);font-size:14px}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;background:var(--accent);vertical-align:middle;margin-left:8px}
+.badge.amber{background:var(--amber)}.badge.grey{background:var(--grey)}.badge.green{background:var(--green)}.badge.red{background:var(--red)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;background:var(--bg)}
+.pill b{color:var(--primary)}
+ul{margin:6px 0;padding-left:20px}
+li{margin:3px 0}
+ul.check{list-style:none;padding-left:0}
+ul.check li::before{content:"☐ ";color:var(--amber);font-weight:700}
+ul.check li.done::before{content:"☑ ";color:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.g{background:var(--green)}.a{background:var(--amber)}.r{background:var(--red)}.gr{background:var(--grey)}
+.src{color:var(--muted);font-size:12px;margin-top:8px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:760px){.cols3{grid-template-columns:1fr}}
+.cols3 h3{font-size:14px;margin:0 0 4px}
+.card-ai{display:flex;gap:14px;align-items:center}
+.card-ai .logo{width:64px;height:64px;border-radius:12px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+a{color:var(--accent)}
+footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>Multi-Read <span class="badge">v0.1 prototype</span> <span class="badge green">Active (local)</span></h1>
+  <div class="sub">Personal · Priority 21 · Personal Project · Status as of 2026-10-06 · Local app: <code>http://127.0.0.1:8765/multi-read/</code></div>
+</header>
+
+<section class="card-ai">
+  <div class="logo">AI+P</div>
+  <div><b>AI + Process</b><br><span class="sub">Only an unfilled template so far: all 9 headings, no content.</span><br><a href="../../AI+PROCESS.md">View page →</a></div>
+</section>
+
+<section>
+  <h2>Snapshot</h2>
+  <div class="pills">
+    <span class="pill"><b>Stack</b> static HTML/CSS/vanilla JS + Python (spaCy) processing</span>
+    <span class="pill"><b>Hosting</b> local — Knowledge vault dashboard, 127.0.0.1:8765</span>
+    <span class="pill"><b>Milestone</b> v0.1 vocabulary-aware Chapter 1 baseline</span>
+    <span class="pill"><b>DoD</b> 7 / 10 checked</span>
+    <span class="pill"><b>Tasks</b> Now 1 · Next 2 · Later 3 · Done 6</span>
+    <span class="pill"><b>Chapters processed</b> 1 (C01)</span>
+  </div>
+  <div class="src">Source: CLAUDE.md, PLAN.md, TASKS.md, STATE.md</div>
+</section>
+
+<section>
+  <h2>Purpose</h2>
+  <p>A local-first reader that teaches the French worth learning for a book, eases less useful difficulty, and helps learners move toward the original text.</p>
+  <div class="src">Source: PROJECT.md</div>
+</section>
+
+<section>
+  <h2>Since last status</h2>
+  <p>First status page, so there's no earlier one to compare against. Activity since the last session closeout (2026-09-29): Rob added first reading notes to the C01 feedback file; the repo moved to the global <code>/project-status</code> skill; the feedback file was renamed <code>feeback-c01.md</code> → <code>feedback-c01.md</code>; end-session refreshed STATE.md (not yet committed). Page regenerated later the same day.</p>
+  <div class="src">Source: git log, project/diary/diary-2026-10.md</div>
+</section>
+
+<div class="grid">
+<section>
+  <h2>Current milestone — v0.1 Chapter 1 baseline</h2>
+  <ul class="check">
+    <li class="done">Project docs describe vision, learner model, constraints, non-goals</li>
+    <li class="done">Repo identifies the actual French Monte-Cristo EPUB</li>
+    <li class="done">Static UI shows C01 in plain, guided, original</li>
+    <li class="done">First-pass contextual word help + original comparison</li>
+    <li>Reader uses vocabulary decisions from C01 analysis</li>
+    <li>C01 preprocessing produces vocabulary records + difficulty map</li>
+    <li>Plain/Guided revised using the map</li>
+    <li class="done">Local event model (lookups, translations, mode changes)</li>
+    <li class="done">Rule-based adaptation engine with visible recommendation</li>
+    <li class="done">EPUB parser extracts C01 into JSON + JS wrapper</li>
+  </ul>
+  <p class="sub">Drift: STATE.md says the three unchecked items are built (vocabulary analysis, difficulty map, Plain substitutions), but PLAN.md was never updated to check them. (derived)</p>
+  <div class="src">Source: PLAN.md, STATE.md</div>
+</section>
+
+<section>
+  <h2>Working / in progress / known issues</h2>
+  <b>Working</b>
+  <ul>
+    <li>Static reader (<code>index.html</code>, <code>src/app.js</code>, <code>src/styles.css</code>)</li>
+    <li>Vocabulary-aware C01 data and reproducible processing scripts</li>
+    <li>Plain / Guided / Original modes with vocabulary help</li>
+  </ul>
+  <b>In progress</b>
+  <ul><li>Fresh C01 reading pass, with notes going into <code>project/ideas/feedback-c01.md</code></li></ul>
+  <b>Known issues</b>
+  <ul>
+    <li>Learner model is deliberately naive</li>
+    <li>Plain mode is not a reviewed B1 simplification</li>
+    <li>Lemma, name and OCR errors are possible; curated meanings cover only a subset</li>
+    <li>Frequencies cover the 55-chapter volume only</li>
+    <li>No sentence translations in schema v2</li>
+  </ul>
+  <div class="src">Source: STATE.md</div>
+</section>
+</div>
+
+<section>
+  <h2>Task board</h2>
+  <div class="cols3">
+    <div><h3>Now</h3><ul><li>Read C01 in the app; collect app, vocabulary and schema ideas for C02</li></ul></div>
+    <div><h3>Next</h3><ul><li>Review notes; revise app, rules or schema; decide on sentence meanings</li><li>Process Chapter 2 (<code>c02.json</code> / <code>c02.js</code>)</li></ul></div>
+    <div><h3>Later</h3><ul><li>Optional LLM transformations behind the processor</li><li>In-app chapter picker</li><li>Smoke-test checklist / browser test</li></ul></div>
+  </div>
+  <div class="src">Source: TASKS.md</div>
+</section>
+
+<div class="grid">
+<section>
+  <h2>Platform</h2>
+  <p><span class="badge green" style="margin-left:0">Active</span> Local static app, served by the Knowledge vault dashboard (LaunchAgent <code>com.robkellington.vault-dashboard</code>). Progress lives in <code>localStorage</code> on that origin. No deploy target for v0.1.</p>
+  <p class="sub">Git: on branch <code>VScode-&amp;-Codex</code>, 4 commits ahead of origin, not pushed.</p>
+  <div class="src">Source: CLAUDE.md Project Reference, STATE.md, git status</div>
+</section>
+
+<section>
+  <h2>Next session</h2>
+  <p>Keep reading Chapter 1 and adding notes to <code>feedback-c01.md</code>. Notes so far: unknown words left unhighlighted in Plain mode (e.g. <i>gréé</i>, <i>arrimé</i>), unclear "Eased in Plain" / "Light Gloss" labels, and praise for the word-usage guidance. Once the pass is done, review the notes before touching the processor or schema.</p>
+  <div class="src">Source: TASKS.md, project/ideas/feedback-c01.md</div>
+</section>
+</div>
+
+<section>
+  <h2>Backlog (top 5)</h2>
+  <ol>
+    <li>Review C01 notes; revise app, rules or schema; decide on sentence meanings</li>
+    <li>Process Chapter 2</li>
+    <li>Optional LLM transformations behind the processor</li>
+    <li>In-app chapter picker</li>
+    <li>Smoke-test checklist / browser test</li>
+  </ol>
+  <p class="sub">No deadline documented.</p>
+  <div class="src">Source: TASKS.md</div>
+</section>
+
+<section>
+  <h2>Recent decisions</h2>
+  <ul>
+    <li><b>2026-09-28</b> — Keep v0.1 static and local (vanilla JS, <code>localStorage</code> only)</li>
+    <li><b>2026-09-28</b> — Serve through the vault dashboard at <code>127.0.0.1:8765/multi-read/</code></li>
+  </ul>
+  <p class="sub">DECISIONS.md has only these 2 entries.</p>
+  <div class="src">Source: DECISIONS.md</div>
+</section>
+
+<section>
+  <h2>Risks</h2>
+  <table>
+    <tr><th>#</th><th>Risk</th><th>Severity</th><th>Next move</th></tr>
+    <tr><td>1</td><td>PLAN.md checklist lags reality: 3 built items still unchecked</td><td><span class="dot a"></span>Amber</td><td>Reconcile at the milestone checkpoint</td></tr>
+    <tr><td>2</td><td>C02 waits on the C01 reading pass, and the feedback file has only a few notes so far</td><td><span class="dot a"></span>Amber</td><td>Keep reading and logging; review before processing C02</td></tr>
+    <tr><td>3</td><td>Vocabulary coverage gaps: unknown words left unhighlighted; lemma/OCR errors</td><td><span class="dot a"></span>Amber</td><td>Revise rules from feedback before C02</td></tr>
+    <tr><td>4</td><td>Simplification can erase Dumas's style</td><td><span class="dot a"></span>Amber</td><td>Keep Original comparison visible; judge from reading pass</td></tr>
+    <tr><td>5</td><td>Work branch <code>VScode-&amp;-Codex</code> is 4 commits ahead of origin and not merged to main</td><td><span class="dot a"></span>Amber</td><td>Rob decides on push / merge</td></tr>
+    <tr><td>6</td><td>Lexical source coverage and licensing limits</td><td><span class="dot a"></span>Amber</td><td>Attribution is in <code>data/monte-cristo/README.md</code>; raw tables stay gitignored</td></tr>
+    <tr><td>7</td><td>Naive learner model (lookup counts are noisy)</td><td><span class="dot gr"></span>Grey</td><td>Deferred by design; revisit after more signals</td></tr>
+  </table>
+  <div class="src">Source: PLAN.md Open Risks, STATE.md, feedback-c01.md, git status</div>
+</section>
+
+<section>
+  <h2>Source freshness</h2>
+  <table>
+    <tr><th>Source</th><th>Last change (git)</th><th></th></tr>
+    <tr><td>PROJECT.md</td><td>2026-09-29</td><td><span class="dot g"></span></td></tr>
+    <tr><td>PLAN.md</td><td>2026-09-29</td><td><span class="dot g"></span></td></tr>
+    <tr><td>STATE.md</td><td>2026-10-06 (refreshed at end-session today; edits not yet committed)</td><td><span class="dot g"></span></td></tr>
+    <tr><td>TASKS.md</td><td>2026-10-06 (rename only; content 2026-09-29)</td><td><span class="dot g"></span></td></tr>
+    <tr><td>DECISIONS.md</td><td>2026-09-29</td><td><span class="dot g"></span></td></tr>
+    <tr><td>CLAUDE.md</td><td>2026-10-06</td><td><span class="dot g"></span></td></tr>
+    <tr><td>project/ideas/feedback-c01.md</td><td>2026-10-06</td><td><span class="dot g"></span></td></tr>
+  </table>
+  <p class="sub">Newest source: 2026-10-06, 0 days old. Repo is active. Not read (never_read): <code>Books/</code> (2 files), <code>data/</code> (2 subfolders).</p>
+</section>
+
+<footer>
+  Generated 2026-10-06 · derived from PROJECT.md, PLAN.md, STATE.md, TASKS.md, DECISIONS.md, CLAUDE.md, project/ideas/feedback-c01.md, project/diary/diary-2026-10.md, git log/status.<br>
+  Colours: red = blocks use, high-severity security, or has no owner/next action · amber = known gap with an accepted next action · green = shipped and recently verified · grey = deliberately deferred (never red).
+</footer>
+
+</main>
+</body>
+</html>

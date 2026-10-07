@@ -1,6 +1,6 @@
 # State
 
-*Last updated: 2026-09-29*
+*Last updated: 2026-10-06*
 
 ## Summary
 
@@ -12,14 +12,14 @@ Multi-Read has a vocabulary-aware first-pass Chapter 1 baseline. The processor a
 - Vocabulary-aware Chapter 1 data in `data/monte-cristo/c01.json`; `c01.js` remains optional for file-mode fallback.
 - Reproducible processing in `scripts/process_chapter.py` and `scripts/vocabulary.py`; `c01.vocabulary.json` and `c01.difficulty-map.json` expose the analysis.
 - Reader modes: Plain eases selected terms and separates some long units, Guided keeps original wording with vocabulary buttons, and Original presents unmarked source text.
-- Feedback scratch file in `project/ideas/feeback-c01.md`.
+- Feedback scratch file in `project/ideas/feedback-c01.md`.
 - Extracted cover image at `assets/monte-cristo-cover.jpg`.
 - Product docs in `PROJECT.md`, `PLAN.md`, and `README.md` are no longer starter templates.
 - The actual French source EPUB path is identified in docs and sample data.
 
 ## In progress
 
-- The learner's fresh Chapter 1 reading and feedback pass in `project/ideas/feeback-c01.md`. Capture app, vocabulary, and schema ideas for Chapter 2, then review them before processing C02.
+- The learner's fresh Chapter 1 reading and feedback pass in `project/ideas/feedback-c01.md`. Capture app, vocabulary, and schema ideas for Chapter 2, then review them before processing C02.
 
 ## Known issues
 
@@ -49,13 +49,14 @@ The Knowledge vault dashboard serves this repo from `/Users/rob/Documents/GitHub
 - How much simplification is acceptable before a passage stops feeling like Dumas.
 - How much vocabulary guidance is helpful before highlighting becomes distracting.
 - What the fresh Chapter 1 reading pass will reveal before C02.
+- Work happens on branch `VScode-&-Codex`, which is ahead of `origin` and not merged into `main`. Push/merge is Rob's call.
 - PLAN.md still shows the three vocabulary-analysis and integration criteria unchecked, although the baseline is implemented. Reconcile the checklist when the current milestone is closed.
 
 ## Resolved this session
 
-- Rebuilt Chapter 1 with vocabulary analysis, contextual help, and selected Plain substitutions; previously smoke-tested the static reader.
-- Removed two non-public-domain EPUBs from Git history before pushing the repository to GitHub. At closeout, `main` and `origin/main` are at `ce9e9f3`; these STATE.md and TASKS.md updates are uncommitted.
-- Set the next handoff: use the app to gather Chapter 2 improvements before changing the processor or chapter schema.
+- 2026-10-06: Configured the repo for the global `/project-status` skill (`## Project status` block in CLAUDE.md with `extra_sources` and `never_read`). Generated the first status page, `project/status/status-2026-10-06.html`, plus `STATUS-SUMMARY.md`.
+- Renamed `project/ideas/feeback-c01.md` → `feedback-c01.md` and updated every reference.
+- First reading notes are in `feedback-c01.md`: unknown words left unhighlighted in Plain mode (gréé, arrimé), unclear "Eased in Plain" / "Light Gloss" labels, and positive notes on the word-usage guidance.
 
 ---
 
